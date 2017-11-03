@@ -1,16 +1,10 @@
 package anthill.controller;
 
-import anthill.Main;
 import anthill.domain.Ant;
-import anthill.domain.Anthill;
 import anthill.model.AnthillModel;
-import javafx.application.Application;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 
 public class ShowAntsController{
 

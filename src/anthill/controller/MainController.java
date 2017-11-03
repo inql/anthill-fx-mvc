@@ -1,14 +1,10 @@
 package anthill.controller;
 
 import anthill.model.AnthillModel;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -29,7 +25,7 @@ public class MainController implements Initializable{
     public void addAntButtonClicked() throws Exception{
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/anthill/view/addAnt.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
+            Parent root1 = fxmlLoader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Dodawanie nowej mrówki: ");
@@ -44,7 +40,7 @@ public class MainController implements Initializable{
     public void showAntsButtonClicked() throws Exception{
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/anthill/view/showAnts.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
+            Parent root1 = fxmlLoader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Zarządzanie mrówkami: ");
