@@ -1,6 +1,6 @@
 package anthill.controller;
 
-import anthill.model.AnthillModel;
+import anthill.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -13,14 +13,7 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable{
 
-    private AnthillModel model;
-
-    public void initModel(AnthillModel model) {
-        if (this.model != null) {
-            throw new IllegalStateException("Model can only be initialized once");
-        }
-        this.model = model ;
-    }
+    GridPaneController gridPaneController = new GridPaneController();
 
     public void addAntButtonClicked() throws Exception{
         try{
@@ -46,14 +39,11 @@ public class MainController implements Initializable{
             stage.setTitle("Zarządzanie mrówkami: ");
             stage.setScene(new Scene(root1, 960, 540));
             stage.show();
+            stage.setOnCloseRequest(e ->
+                gridPaneController.setGridPane(Main.bp));
         }catch (Exception e){
             System.out.println("Error - "+ e);
         }
-    }
-
-
-    public void reload(){
-
     }
 
 
