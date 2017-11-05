@@ -2,6 +2,7 @@ package anthill.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Anthill {
 
@@ -61,15 +62,24 @@ public class Anthill {
             if(ant.getX() == item.getX() && ant.getY() == item.getY()){
                 if(!ant.isIsCarryingLeaf())
                 {
+                    /*
                     ant.setIsCarryingLeaf(true);
                     item.setIsCarryable(false);
                     ant.setLeaf(item);
+                    item.setAnt(ant);
+                    ant.updateImage();
+                    item.updateImage();
+                    */
+                    item.updateImage();
                     ant.updateImage();
                 }
                 else{
                     ant.setIsCarryingLeaf(false);
                     ant.setLeaf(null);
+                    item.setAnt(null);
+
                     ant.updateImage();
+                    item.updateImage();
                 }
             }
         }
@@ -91,5 +101,7 @@ public class Anthill {
         }
         return null;
     }
+
+    //public void moveRandomly()
 
 }

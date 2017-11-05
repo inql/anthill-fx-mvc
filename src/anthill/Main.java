@@ -32,6 +32,7 @@ public class Main extends Application {
         FXMLLoader showAntsLoader = new FXMLLoader(getClass().getResource("/anthill/view/showAnts.fxml"));
         FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/anthill/view/main.fxml"));
 
+
         bp = mainLoader.load();
         gridPaneController.setGridPane(bp);
         primaryStage.setTitle("Mrowisko");

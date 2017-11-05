@@ -38,16 +38,24 @@ public class GridPaneController {
         {
             for(int j = 0; j<Anthill.getWidth(); j++)
             {
-                if(Anthill.isAntThere(i,j))
-                {
+                if(Anthill.isLeafThere(i,j) && !Anthill.isAntThere(i,j)){
+                    Leaf leaf = Anthill.findExactLeaf(i,j);
+                    GridPane.setConstraints(leaf.getImageView(),i,j);
+                    gridPane.getChildren().add(leaf.getImageView());
+                }
+                else if(Anthill.isAntThere(i,j) && !Anthill.isLeafThere(i,j)) {
                     Ant ant = Anthill.findExactAnt(i,j);
                         GridPane.setConstraints(ant.getImageView(),i,j);
                         gridPane.getChildren().add(ant.getImageView());
                 }
-                if(Anthill.isLeafThere(i,j)){
-                    Leaf leaf = Anthill.findExactLeaf(i,j);
-                    GridPane.setConstraints(leaf.getImageView(),i,j);
+                else if(Anthill.isAntThere(i,j) && Anthill.isLeafThere(i,j)) {
+                    Ant ant = Anthill.findExactAnt(i,j);
+                    GridPane.setConstraints(ant.getImageView(),i,j);
+                    gridPane.getChildren().add(ant.getImageView());
+
+
                 }
+
             }
         }
 

@@ -31,6 +31,14 @@ public class MainController implements Initializable{
         }
     }
 
+    public void moveAllButtonClicked(){
+
+    }
+
+    public void addLeafButtonClicked(){
+
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
