@@ -15,21 +15,6 @@ public class MainController implements Initializable{
 
     GridPaneController gridPaneController = new GridPaneController();
 
-    public void addAntButtonClicked() throws Exception{
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/anthill/view/addAnt.fxml"));
-            Parent root1 = fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Dodawanie nowej mrówki: ");
-            stage.setScene(new Scene(root1, 300, 300));
-            stage.show();
-
-        }catch (Exception e){
-            System.out.println("Error - "+ e);
-        }
-    }
-
     public void showAntsButtonClicked() throws Exception{
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/anthill/view/showAnts.fxml"));

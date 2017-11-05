@@ -10,8 +10,8 @@ public class Anthill {
     private static int height,width;
 
     public Anthill(int height, int width) {
-        this.height = height;
-        this.width = width;
+        Anthill.height = height;
+        Anthill.width = width;
     }
 
     public List<Ant> getAnts() {
@@ -23,7 +23,7 @@ public class Anthill {
     }
 
     public void setHeight(int height) {
-        this.height = height;
+        Anthill.height = height;
     }
 
     public static int getWidth() {
@@ -31,12 +31,21 @@ public class Anthill {
     }
 
     public void setWidth(int width) {
-        this.width = width;
+        Anthill.width = width;
     }
 
     public static boolean isAntThere(int x, int y){
         for (Ant item:
                 ants) {
+            if(x == item.getX() && y == item.getY())
+                return true;
+        }
+        return false;
+    }
+
+    public static boolean isLeafThere(int x, int y){
+        for (Leaf item:
+                leafs) {
             if(x == item.getX() && y == item.getY())
                 return true;
         }
@@ -51,12 +60,36 @@ public class Anthill {
         for(Leaf item : leafs){
             if(ant.getX() == item.getX() && ant.getY() == item.getY()){
                 if(!ant.isIsCarryingLeaf())
+                {
                     ant.setIsCarryingLeaf(true);
+                    item.setIsCarryable(false);
+                    ant.setLeaf(item);
+                    ant.updateImage();
+                }
                 else{
-
+                    ant.setIsCarryingLeaf(false);
+                    ant.setLeaf(null);
+                    ant.updateImage();
                 }
             }
         }
+    }
+
+    public static Ant findExactAnt(int x, int y){
+        for(Ant item : ants){
+            if(item.getX()==x && item.getY()==y)
+                return item;
+        }
+
+        return null;
+    }
+
+    public static Leaf findExactLeaf(int x, int y){
+        for(Leaf item : leafs){
+            if(item.getX()==x && item.getY()==y)
+                return item;
+        }
+        return null;
     }
 
 }

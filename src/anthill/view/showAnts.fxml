@@ -47,7 +47,7 @@
          <children>
             <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonClicked" text="Dodaj" />
             <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteButtonClicked" text="Usuń" />
-            <Button fx:id="deleteButton1" layoutX="10.0" layoutY="36.0" mnemonicParsing="false" onAction="#deleteButtonClicked" text="Porusz" />
+            <Button fx:id="moveButton" layoutX="10.0" layoutY="36.0" mnemonicParsing="false" onAction="#moveButtonClicked" text="Porusz" />
             <Button fx:id="deleteButton11" layoutX="10.0" layoutY="62.0" mnemonicParsing="false" onAction="#deleteButtonClicked" text="Usuń" />
          </children>
       </VBox>

@@ -12,27 +12,17 @@
    <left>
       <VBox spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="addAntButton" mnemonicParsing="false" onAction="#addAntButtonClicked" prefWidth="113.0" text="Dodaj mrówkę" wrapText="true">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
             <Button fx:id="showAntsButton" mnemonicParsing="false" onAction="#showAntsButtonClicked" prefHeight="22.0" prefWidth="113.0" text="Zarządzaj mrówkami">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="113.0" text="Przemieść mrówkę">
+            <Button fx:id="moveAllButton" mnemonicParsing="false" onAction="#moveAllButtonClicked" text="Przemieść wszystko">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="Przemieść wszystko">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" prefWidth="113.0" text="Dodaj listek">
+            <Button fx:id="addLeafButton" mnemonicParsing="false" onAction="#addLeafButtonClicked" prefWidth="113.0" text="Dodaj listek">
                <font>
                   <Font size="10.0" />
                </font>

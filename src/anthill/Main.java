@@ -4,6 +4,7 @@ import anthill.controller.GridPaneController;
 import anthill.controller.MainController;
 import anthill.controller.ShowAntsController;
 import anthill.domain.Anthill;
+import anthill.domain.Leaf;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,16 +24,13 @@ import java.util.List;
 public class Main extends Application {
 
     private GridPaneController gridPaneController = new GridPaneController();
-    public FXMLLoader showAntsLoader = new FXMLLoader(getClass().getResource("/anthill/view/showAnts.fxml"));
-    public FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/anthill/view/main.fxml"));
     public static BorderPane bp;
+    private Anthill anthill = new Anthill(10,10);
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-
-
-        ShowAntsController showAntsController = showAntsLoader.getController();
-        MainController mainController = mainLoader.getController();
+        FXMLLoader showAntsLoader = new FXMLLoader(getClass().getResource("/anthill/view/showAnts.fxml"));
+        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/anthill/view/main.fxml"));
 
         bp = mainLoader.load();
         gridPaneController.setGridPane(bp);

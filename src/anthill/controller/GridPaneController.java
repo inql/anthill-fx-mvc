@@ -1,16 +1,20 @@
 package anthill.controller;
 
+import anthill.domain.Ant;
 import anthill.domain.Anthill;
+import anthill.domain.Leaf;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
 public class GridPaneController {
+
+    public GridPaneController(){
+        
+    }
 
     public void setGridPane(BorderPane borderPane){
         borderPane.setCenter(buildAnthill());
@@ -29,25 +33,25 @@ public class GridPaneController {
             ColumnConstraints columnConstraints = new ColumnConstraints(50);
             gridPane.getColumnConstraints().add(columnConstraints);
         }
-        Image leaf = new Image("file:resources/leaf.png");
-        Image ant = new Image("file:resources/ant.png");
 
-        for(int i =0; i<10; i++)
+        for(int i =0; i<Anthill.getHeight(); i++)
         {
-            for(int j = 0; j<10; j++)
+            for(int j = 0; j<Anthill.getWidth(); j++)
+            {
                 if(Anthill.isAntThere(i,j))
-                    gridPane.add(getImg(ant,50,50),i,j);
+                {
+                    Ant ant = Anthill.findExactAnt(i,j);
+                        GridPane.setConstraints(ant.getImageView(),i,j);
+                        gridPane.getChildren().add(ant.getImageView());
+                }
+                if(Anthill.isLeafThere(i,j)){
+                    Leaf leaf = Anthill.findExactLeaf(i,j);
+                    GridPane.setConstraints(leaf.getImageView(),i,j);
+                }
+            }
         }
 
         return gridPane;
-    }
-
-    private ImageView getImg(Image image, int width, int height){
-        ImageView imageView = new ImageView(image);
-        imageView.setFitWidth(width);
-        imageView.setFitHeight(height);
-
-        return imageView;
     }
 
 
