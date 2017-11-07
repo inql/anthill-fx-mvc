@@ -37,9 +37,9 @@ public class GridPaneController {
             gridPane.getColumnConstraints().add(columnConstraints);
         }
 
-        for(int i =0; i<Anthill.getHeight(); i++)
+        for(int i =0; i<Anthill.getWidth(); i++)
         {
-            for(int j = 0; j<Anthill.getWidth(); j++)
+            for(int j = 0; j<Anthill.getHeight(); j++)
             {
                 if(Anthill.isLeafThere(i,j) && !Anthill.isAntThere(i,j)){
                     Leaf leaf = Anthill.findExactLeaf(i,j);
