@@ -1,27 +1,14 @@
 package anthill;
 
 import anthill.controller.GridPaneController;
-import anthill.controller.MainController;
-import anthill.controller.ShowAntsController;
 import anthill.domain.Anthill;
-import anthill.domain.Leaf;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Main extends Application implements Runnable{
+public class Main extends Application{
 
     private GridPaneController gridPaneController = new GridPaneController();
     public static BorderPane bp;
@@ -43,11 +30,5 @@ public class Main extends Application implements Runnable{
 
     public static void main(String[] args) {
         launch(args);
-    }
-
-
-    @Override
-    public void run() {
-
     }
 }

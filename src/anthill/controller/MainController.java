@@ -2,16 +2,12 @@ package anthill.controller;
 
 import anthill.Main;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class MainController implements Initializable{
+public class MainController{
 
     GridPaneController gridPaneController = new GridPaneController();
     private static Stage stage;
@@ -26,7 +22,7 @@ public class MainController implements Initializable{
             Parent root1 = fxmlLoader.load();
             stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Zarządzanie mrówkami: ");
+            stage.setTitle("Zarządzanie");
             stage.setScene(new Scene(root1, 960, 540));
             root1.requestFocus();
             stage.show();
@@ -39,13 +35,5 @@ public class MainController implements Initializable{
 
     public void exitButtonClicked(){
         Main.mainStage.close();
-    }
-
-
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
     }
 }
