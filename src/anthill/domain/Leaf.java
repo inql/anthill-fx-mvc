@@ -19,8 +19,15 @@ public class Leaf implements Item{
         this.isCarryable = new SimpleBooleanProperty();
         this.antName = new SimpleStringProperty();
         updateImage();
-        this.imageView.setFitWidth(50);
-        this.imageView.setFitHeight(50);
+    }
+
+    public Leaf(int x, int y, Ant ant){
+        this.x = new SimpleIntegerProperty(x);
+        this.y = new SimpleIntegerProperty(y);
+        this.isCarryable = new SimpleBooleanProperty(false);
+        this.ant = ant;
+        this.antName = new SimpleStringProperty(this.ant.getName());
+        this.imageView = new ImageView();
     }
 
     public void updateImage(){
@@ -29,7 +36,7 @@ public class Leaf implements Item{
             this.antName.set("Brak");
             this.imageView = new ImageView(new Image("file:resources/leaf.png"));
         }
-        else{
+        else if(!Anthill.findExactAnt(getX(),getY()).isIsCarryingLeaf()){
             this.isCarryable.set(false);
             setAnt(Anthill.findExactAnt(getX(),getY()));
             this.antName.set(getAnt().getName());
@@ -38,6 +45,8 @@ public class Leaf implements Item{
             this.ant.setIsCarryingLeaf(true);
             this.ant.updateImage();
         }
+        this.imageView.setFitWidth(35);
+        this.imageView.setFitHeight(35);
     }
 
     public String getAntName() {

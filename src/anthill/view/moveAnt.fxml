@@ -3,20 +3,17 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<?import javafx.scene.control.ToggleButton?>
-<GridPane xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane onKeyPressed="#moveAnt" xmlns="http://javafx.com/javafx/9" stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -29,48 +26,13 @@
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding></Label>
-      <Button fx:id="moveButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#moveButtonClicked" text="Ok" GridPane.rowIndex="3">
-         <GridPane.margin>
-            <Insets bottom="5.0" left="40.0" right="5.0" top="5.0" />
-         </GridPane.margin>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding></Button>
-      <Button fx:id="cancelButton" mnemonicParsing="false" text="Anuluj" onAction="#cancelButtonClicked" GridPane.columnIndex="2" GridPane.rowIndex="3">
+      <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClicked" text="Anuluj" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
          <GridPane.margin>
-            <Insets bottom="5.0" left="5.0" top="5.0" />
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin></Button>
-      <ToggleButton fx:id="upRadioButton" mnemonicParsing="false" text="Góra" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </GridPane.margin>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding></ToggleButton>
-      <ToggleButton fx:id="leftRadioButton" mnemonicParsing="false" text="Lewo" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </GridPane.margin>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding></ToggleButton>
-      <ToggleButton fx:id="downRadioButton" contentDisplay="CENTER" mnemonicParsing="false" text="Dół" GridPane.columnIndex="1" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </GridPane.margin>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding></ToggleButton>
-      <ToggleButton fx:id="rightRadioButton" mnemonicParsing="false" text="Prawo" GridPane.columnIndex="2" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </GridPane.margin>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding></ToggleButton>
       <Label fx:id="antNameLabel" text="Label" GridPane.columnIndex="2">
          <GridPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -78,5 +40,13 @@
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding></Label>
+      <Label text="Użyj klawiszy W,S,A,D by poruszyć mrówką" GridPane.columnSpan="3" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+         </GridPane.margin>
+         <padding>
+            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+         </padding>
+      </Label>
    </children>
 </GridPane>

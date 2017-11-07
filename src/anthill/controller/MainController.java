@@ -14,15 +14,21 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable{
 
     GridPaneController gridPaneController = new GridPaneController();
+    private static Stage stage;
+
+    public static Stage getStage(){
+        return stage;
+    }
 
     public void showAntsButtonClicked() throws Exception{
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/anthill/view/showAnts.fxml"));
             Parent root1 = fxmlLoader.load();
-            Stage stage = new Stage();
+            stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Zarządzanie mrówkami: ");
             stage.setScene(new Scene(root1, 960, 540));
+            root1.requestFocus();
             stage.show();
             stage.setOnCloseRequest(e ->
                 gridPaneController.setGridPane(Main.bp));
@@ -31,13 +37,11 @@ public class MainController implements Initializable{
         }
     }
 
-    public void moveAllButtonClicked(){
-
+    public void exitButtonClicked(){
+        Main.mainStage.close();
     }
 
-    public void addLeafButtonClicked(){
 
-    }
 
 
     @Override

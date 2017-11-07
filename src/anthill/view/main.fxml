@@ -2,27 +2,18 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="anthill.controller.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="anthill.controller.MainController">
    <left>
       <VBox spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="showAntsButton" mnemonicParsing="false" onAction="#showAntsButtonClicked" prefHeight="22.0" prefWidth="113.0" text="Zarządzaj mrówkami">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
-            <Button fx:id="moveAllButton" mnemonicParsing="false" onAction="#moveAllButtonClicked" text="Przemieść wszystko">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
-            <Button fx:id="addLeafButton" mnemonicParsing="false" onAction="#addLeafButtonClicked" prefWidth="113.0" text="Dodaj listek">
+            <Button fx:id="showAntsButton" mnemonicParsing="false" onAction="#showAntsButtonClicked" text="Zarządzaj mrówkami">
                <font>
                   <Font size="10.0" />
                </font>
@@ -40,7 +31,19 @@
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefWidth="113.0" text="Wyjście" />
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Anthill project - Created by Dawid Bińkuś">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonClicked" text="Wyjście" />
          </children>
          <BorderPane.margin>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />

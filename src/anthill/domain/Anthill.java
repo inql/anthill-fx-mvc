@@ -1,7 +1,12 @@
 package anthill.domain;
 
+import anthill.controller.ShowAntsController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Anthill {
@@ -47,7 +52,16 @@ public class Anthill {
     public static boolean isLeafThere(int x, int y){
         for (Leaf item:
                 leafs) {
-            if(x == item.getX() && y == item.getY())
+            if(x == item.getX() && y == item.getY() && item.isIsCarryable())
+                return true;
+        }
+        return false;
+    }
+
+    public static boolean isNotCarryableLeafThere(int x, int y){
+        for(Leaf item:
+                leafs){
+            if(x == item.getX() && y == item.getY() & !item.isIsCarryable())
                 return true;
         }
         return false;
@@ -59,7 +73,7 @@ public class Anthill {
 
     public static void behaviorWhenOnLeaf(Ant ant){
         for(Leaf item : leafs){
-            if(ant.getX() == item.getX() && ant.getY() == item.getY()){
+            if(item.isIsCarryable() && (ant.getX() == item.getX() && ant.getY() == item.getY())){
                 if(!ant.isIsCarryingLeaf())
                 {
                     /*
@@ -74,11 +88,15 @@ public class Anthill {
                     ant.updateImage();
                 }
                 else{
+                    moveRandomly(item);
+                    Leaf carried = ant.getLeaf();
                     ant.setIsCarryingLeaf(false);
                     ant.setLeaf(null);
-                    item.setAnt(null);
-
+                    carried.setIsCarryable(true);
+                    carried.setAnt(null);
+                    moveRandomly(carried);
                     ant.updateImage();
+                    carried.updateImage();
                     item.updateImage();
                 }
             }
@@ -102,6 +120,58 @@ public class Anthill {
         return null;
     }
 
-    //public void moveRandomly()
+    public static boolean moveRandomly(Item item){
+        int newX = item.getX();
+        int newY = item.getY();
+        int newValues[];
+        int counter = 0;
+        if(item.getClass()==Ant.class){
+            do {
+
+                newValues = generateNewValues(newX,newY);
+                counter++;
+                if(counter>4)
+                    return false;
+
+            }while(Anthill.isAntThere(newValues[0], newValues[1]) || !Anthill.isPlaceCorrect(newValues[0], newValues[1]));
+            item.setX(newValues[0]);
+            item.setY(newValues[1]);
+            Anthill.behaviorWhenOnLeaf((Ant) item);
+        }
+        else if(item.getClass()==Leaf.class){
+            do{
+                newValues = generateNewValues(newX,newY);
+                counter++;
+                if(counter>4)
+                    return false;
+            }while(Anthill.isLeafThere(newValues[0], newValues[1]) || !Anthill.isPlaceCorrect(newValues[0], newValues[1]));
+            item.setX(newValues[0]);
+            item.setY(newValues[1]);
+            if(findExactAnt(item.getX(),item.getY())!=null){
+                Anthill.behaviorWhenOnLeaf(findExactAnt(item.getX(),item.getY()));
+            }
+        }
+        return true;
+    }
+
+    public static int[] generateNewValues(int x, int y){
+        int command = ThreadLocalRandom.current().nextInt(0,4);
+        switch (command){
+            case 0:
+                x++;
+                break;
+            case 1:
+                x--;
+                break;
+            case 2:
+                y++;
+                break;
+            case 3:
+                y--;
+                break;
+        }
+
+        return new int[] {x,y};
+    }
 
 }

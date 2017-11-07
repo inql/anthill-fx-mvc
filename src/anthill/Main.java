@@ -21,23 +21,23 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main extends Application {
+public class Main extends Application implements Runnable{
 
     private GridPaneController gridPaneController = new GridPaneController();
     public static BorderPane bp;
-    private Anthill anthill = new Anthill(10,10);
+    private Anthill anthill = new Anthill(12,10);
+    public static Stage mainStage;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader showAntsLoader = new FXMLLoader(getClass().getResource("/anthill/view/showAnts.fxml"));
         FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/anthill/view/main.fxml"));
-
 
         bp = mainLoader.load();
         gridPaneController.setGridPane(bp);
         primaryStage.setTitle("Mrowisko");
         primaryStage.setScene(new Scene(bp, 960, 540));
         primaryStage.show();
+        mainStage = primaryStage;
     }
 
 
@@ -46,5 +46,8 @@ public class Main extends Application {
     }
 
 
+    @Override
+    public void run() {
 
+    }
 }

@@ -27,10 +27,13 @@ public class GridPaneController {
         gridPane.setStyle("-fx-background-color:#ffffff; -fx-opacity:1;");
         gridPane.setAlignment(Pos.CENTER);
 
-        for(int i =0; i<10; i++){
-            RowConstraints rowConstraints = new RowConstraints(50);
+        for(int i =0; i<Anthill.getHeight(); i++){
+            RowConstraints rowConstraints = new RowConstraints(40);
             gridPane.getRowConstraints().add(rowConstraints);
-            ColumnConstraints columnConstraints = new ColumnConstraints(50);
+
+        }
+        for(int i =0; i<Anthill.getWidth(); i++){
+            ColumnConstraints columnConstraints = new ColumnConstraints(40);
             gridPane.getColumnConstraints().add(columnConstraints);
         }
 
@@ -40,16 +43,19 @@ public class GridPaneController {
             {
                 if(Anthill.isLeafThere(i,j) && !Anthill.isAntThere(i,j)){
                     Leaf leaf = Anthill.findExactLeaf(i,j);
+                    leaf.updateImage();
                     GridPane.setConstraints(leaf.getImageView(),i,j);
                     gridPane.getChildren().add(leaf.getImageView());
                 }
                 else if(Anthill.isAntThere(i,j) && !Anthill.isLeafThere(i,j)) {
                     Ant ant = Anthill.findExactAnt(i,j);
+                    ant.updateImage();
                         GridPane.setConstraints(ant.getImageView(),i,j);
                         gridPane.getChildren().add(ant.getImageView());
                 }
                 else if(Anthill.isAntThere(i,j) && Anthill.isLeafThere(i,j)) {
                     Ant ant = Anthill.findExactAnt(i,j);
+                    ant.updateImage();
                     GridPane.setConstraints(ant.getImageView(),i,j);
                     gridPane.getChildren().add(ant.getImageView());
 

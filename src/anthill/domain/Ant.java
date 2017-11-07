@@ -19,7 +19,15 @@ public class Ant implements Item {
         this.y = new SimpleIntegerProperty(y);
         this.name = new SimpleStringProperty(name);
         this.isCarryingLeaf = new SimpleBooleanProperty(isCarryingLeaf);
-        this.leaf = null;
+        if(isCarryingLeaf){
+            Leaf leaf = new Leaf(x,y,this);
+            this.leaf = leaf;
+            Anthill.leafs.add(leaf);
+        }
+        else{
+            this.leaf = null;
+        }
+
         updateImage();
     }
 
@@ -29,8 +37,8 @@ public class Ant implements Item {
         else
             this.imageView = new ImageView(new Image("file:resources/ant.png"));
 
-        this.imageView.setFitHeight(50);
-        this.imageView.setFitWidth(50);
+        this.imageView.setFitHeight(35);
+        this.imageView.setFitWidth(35);
     }
 
     public int getX() {
